@@ -1,9 +1,11 @@
-import * as app from "./app.js";
+// IMPORTS
+import * as APP from "./app.js";
 
+// On charge tous dans le window une fois que tous est chargé
 window.addEventListener("load", ()=>{
 
-    // Exo 4
-    app.init();
+    // On initialise l'application
+    APP.init();
 
 });
 
