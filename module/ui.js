@@ -1,6 +1,7 @@
 function displayProduct(produit) {
-    return `<div class="product">
-        <div class="photo">
+    let div = document.createElement("div");
+    div.setAttribute("class", "product");
+    div.innerHTML = `<div class="photo">
         <span class="mdi mdi-camera"></span>
         <a class="product-add2cart">
         <span class="mdi mdi-cart"></span>
@@ -14,12 +15,11 @@ function displayProduct(produit) {
         <div class="details-description">
         ${produit.description}
         </div>
-        </div>
         </div>`
+    return div;
 }
 
 export function buildProductsList(tabProduits) {
-    let res = "";
-    tabProduits.forEach(prod => res += displayProduct(prod))
-    return res;
+    let zoneProduit = document.getElementById("product-list");
+    tabProduits.forEach(prod => zoneProduit.appendChild(displayProduct(prod)))
 }

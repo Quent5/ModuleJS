@@ -1,8 +1,9 @@
 import * as PROD from "./products.js";
 import * as UI from "./ui.js";
 
-function init(){
+export function init(){
 
+    console.log("de")
+    UI.buildProductsList(PROD.products);
 
-        
 }

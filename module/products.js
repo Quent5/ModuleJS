@@ -1,6 +1,4 @@
-
-
-let products = [];
+export let products = [];
 
 function Produit(reference, price, descr){
     this.reference = reference;
@@ -9,14 +7,10 @@ function Produit(reference, price, descr){
 }
 
 let a = new Produit("Table", 100, "table en bois de chêne");
-tab.push(a);
+products.push(a);
 let b = new Produit("Casque", 200, "Casque de ski");
-tab.push(b);
+products.push(b);
 let c = new Produit("Ordinateur", 1000, "Ordinateur de bureau");
-tab.push(c);
+products.push(c);
 let d = new Produit("Lampe", 50, "Lampe de bureau");
-tab.push(d);
-
-export default {
-    tab : products
-}
+products.push(d);
