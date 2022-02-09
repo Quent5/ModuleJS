@@ -44,3 +44,9 @@ export function nbArticles() {
     })
     return nb;
 }
+
+
+export function emptyCart(){
+    panier.slice(array.length);
+    console.log("slt");
+}

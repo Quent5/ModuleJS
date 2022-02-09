@@ -1,6 +1,7 @@
 // IMPORTS
 import * as PROD from "./products.js";
 import * as UI from "./ui.js";
+import * as CART from "./cart.js";
 
 /**
  * Fonction exportée qui initialise toute l'application selon les différents modules
@@ -16,6 +17,12 @@ export function init(){
         let zoneProduit = document.getElementById("product-list");
         zoneProduit.innerHTML = "";
         UI.buildProductsList(PROD.search(barreRecherche.value));
+    });
+
+    let panierVide = document.querySelector("#empty-cart");
+    panierVide.addEventListener("click", (event)=>{
+        console.log("slt");
+        CART.emptyCart();
     });
 
 }
