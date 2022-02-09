@@ -19,7 +19,7 @@ function Produit(reference, price, descr){
  * @returns un tableau de Produit filtré selon le keywords
  */
 export function search(keywords) {
-    const f = element => element.reference.indexOf(keywords)!==-1;
+    const f = element => element.reference.indexOf(keywords)!==-1 || element.description.indexOf(keywords)!==-1;
     return products.filter(f);
 }
 
