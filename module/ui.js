@@ -30,16 +30,29 @@ function displayProduct(produit) {
         </div>`
 
     // On cherche les élements de class product-add2cart (logiquement, 1 seul) et on lui ajoute un even click
-    let boutons = div.getElementsByClassName("product-add2cart");
-    Array.from(boutons).forEach((elem) => {
-        elem.addEventListener("click", (event)=>{
-            CART.addToCart(produit);
-        })
+    let bouton = div.querySelector(".product-add2cart");
+    bouton.addEventListener("click", (event)=>{
+        CART.addToCart(produit);
+        buildCart();
     });
 
     // on retourne le resultat
     return div;
 }
+
+function displayCart() {
+
+    let concat = (acc, elem) => {
+        return acc+`<tr>`+elem+`</tr>`;
+    }
+    let res = CART.panier.map(elem=>`<td data-type="ref">${elem.product.reference}</td>
+                    <td data-type="qte">x${elem.qty}</td>
+                    <td data-type="amount">${elem.product.price}€</td>`).reduce(concat, ``);
+
+    return res;
+
+}
+
 
 /**
  * Fonction exporter qui generer l'affichage du tableau de produits donnés en parametres et qui l'insere dans le DOM
@@ -48,4 +61,13 @@ function displayProduct(produit) {
 export function buildProductsList(tabProduits) {
     let zoneProduit = document.getElementById("product-list");
     tabProduits.forEach(prod => zoneProduit.appendChild(displayProduct(prod)))
+}
+
+export function buildCart() {
+    let zonePanier = document.getElementById("cart-content");
+    zonePanier.innerHTML = displayCart();
+    let nbArticlesPanier = document.getElementById("total-products");
+    nbArticlesPanier.innerText = CART.nbArticles()
+    let total = document.getElementById("cart-total");
+    total.innerText = CART.genericCalc((elem)=>elem)+"€";
 }

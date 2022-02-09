@@ -1,5 +1,5 @@
 // Tableau de ProduitPanier
-let panier = [];
+export let panier = [];
 
 /**
  * Fonction constructeur de ProduitPanier
@@ -19,7 +19,7 @@ function ProduitPanier(product, qty){
 export function addToCart(produit) {
     let trouve = false;
     panier.forEach((elem)=> {
-            if (elem.reference === produit.reference) {
+            if (elem.product.reference === produit.reference) {
                 elem.qty += 1;
                 trouve = true;
             }
@@ -27,4 +27,20 @@ export function addToCart(produit) {
     if (!trouve) {
         panier.push(new ProduitPanier(produit, 1));
     }
+}
+
+export function genericCalc(reduce) {
+    let total = 0;
+    panier.forEach((elem)=>{
+        total += reduce(elem.qty*elem.product.price);
+    });
+    return total;
+}
+
+export function nbArticles() {
+    let nb = 0;
+    panier.forEach((elem)=>{
+        nb += elem.qty;
+    })
+    return nb;
 }
