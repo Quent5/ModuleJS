@@ -14,7 +14,8 @@ function displayProduct(produit) {
 
     // On lui donne le contenu afin de générer l'affichage du produit en question
     div.innerHTML = `<div class="photo">
-        <span class="mdi mdi-camera"></span>
+                <img src=${produit.image}>
+
         <a class="product-add2cart">
         <span class="mdi mdi-cart"></span>
         </a>

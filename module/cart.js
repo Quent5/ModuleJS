@@ -47,6 +47,5 @@ export function nbArticles() {
 
 
 export function emptyCart(){
-    panier.slice(array.length);
-    console.log("slt");
+    panier = []
 }

@@ -19,10 +19,10 @@ export function init(){
         UI.buildProductsList(PROD.search(barreRecherche.value));
     });
 
-    let panierVide = document.querySelector("#empty-cart");
-    panierVide.addEventListener("click", (event)=>{
-        console.log("slt");
-        CART.emptyCart();
-    });
+    let panierVideTexte = document.getElementById("empty-cart");
+    panierVideTexte.addEventListener("click", function (){
+        CART.emptyCart()
+        UI.buildCart()
+    })
 
 }
