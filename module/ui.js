@@ -42,16 +42,20 @@ function displayProduct(produit) {
 }
 
 function displayCart() {
-
+    let tab = [];
     let concat = (acc, elem) => {
         return acc+`<tr>`+elem+`</tr>`;
     }
-    let res = CART.panier.map(elem=>`<td data-type="ref">${elem.product.reference}</td>
-                    <td data-type="qte">x${elem.qty}</td>
-                    <td data-type="amount">${elem.product.price}€</td>`).reduce(concat, ``);
+    
+    for (var i = 0; i < localStorage.length; i++) {
+        let produitPers = JSON.parse (localStorage.getItem(localStorage.key(i)));
+        tab.push(produitPers);
+    }
+    let res = tab.map(elem=>`<td data-type="ref">${elem.product.reference}</td>
+                        <td data-type="qte">x${elem.qty}</td>
+                        <td data-type="amount">${elem.product.price}€</td>`).reduce(concat, ``);
 
-    return res;
-
+        return res;
 }
 
 

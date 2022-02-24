@@ -1,5 +1,3 @@
-// Tableau de ProduitPanier
-export let panier = [];
 
 /**
  * Fonction constructeur de ProduitPanier
@@ -13,39 +11,47 @@ function ProduitPanier(product, qty){
 
 /**
  * Fonction exporté qui ajoute dans le panier le produit donné en parametre
- * s'il est déjà présent, on incrémente sa quantité de 1
+ * s'il est déjà présent, on incrémente sa quantité de 1 elem.product.reference
  * @param produit produit a ajouter
  */
 export function addToCart(produit) {
     let trouve = false;
-    panier.forEach((elem)=> {
-            if (elem.product.reference === produit.reference) {
-                elem.qty += 1;
-                trouve = true;
-            }
-        });
+
+    for (var i = 0; i < localStorage.length; i++) {
+        let produitPers = JSON.parse (localStorage.getItem(localStorage.key(i)));
+
+        if (produitPers.product.reference === produit.reference) {
+            produitPers.qty++;
+            localStorage.setItem(produitPers.product.reference, JSON.stringify(produitPers));
+            trouve = true;
+        }
+     }
     if (!trouve) {
-        panier.push(new ProduitPanier(produit, 1));
+        let produitPa = {"product" : produit, "qty" : 1}
+        localStorage.setItem(produit.reference, JSON.stringify(produitPa));
     }
 }
 
 export function genericCalc(reduce) {
     let total = 0;
-    panier.forEach((elem)=>{
-        total += reduce(elem.qty*elem.product.price);
-    });
+
+    for (var i = 0; i < localStorage.length; i++) {
+        let produitPers = JSON.parse (localStorage.getItem(localStorage.key(i)));
+        total += reduce(produitPers.qty*produitPers.product.prix);
+    }
     return total;
 }
 
 export function nbArticles() {
     let nb = 0;
-    panier.forEach((elem)=>{
-        nb += elem.qty;
-    })
-    return nb;
+   for (var i = 0; i < localStorage.length; i++) {
+        let produitPers = JSON.parse (localStorage.getItem(localStorage.key(i)));
+        nb += produitPers.qty;
+   }
+   return nb;
 }
 
 
 export function emptyCart(){
-    panier = []
+    localStorage.clear();
 }
