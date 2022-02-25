@@ -6,6 +6,6 @@ window.addEventListener("load", ()=>{
 
     // On initialise l'application
     APP.init();
-
+    
 });
 

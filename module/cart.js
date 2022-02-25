@@ -32,16 +32,21 @@ export function addToCart(produit) {
     }
 }
 
+/*
+* Génère le total du panier 
+*/
 export function genericCalc(reduce) {
     let total = 0;
 
     for (var i = 0; i < localStorage.length; i++) {
         let produitPers = JSON.parse (localStorage.getItem(localStorage.key(i)));
-        total += reduce(produitPers.qty*produitPers.product.prix);
+        total += reduce(produitPers.qty*produitPers.product.price);
     }
     return total;
 }
-
+/*
+* Compte le nombre d'article contenu dans le panier
+*/
 export function nbArticles() {
     let nb = 0;
    for (var i = 0; i < localStorage.length; i++) {
@@ -51,7 +56,9 @@ export function nbArticles() {
    return nb;
 }
 
-
+/*
+* Vide le localstorage donc le panier
+*/
 export function emptyCart(){
     localStorage.clear();
 }

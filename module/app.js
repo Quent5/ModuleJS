@@ -11,6 +11,10 @@ export function init(){
     // Exo3: On affiche tous les produits
     UI.buildProductsList(PROD.products);
 
+    //on charge les produit stocké dans le localstorage et on contruit le panier en fonction
+    PROD.chargerLocalStorage();
+    UI.buildCart();
+
     // Exo 5: On donne un event keyup sur la barre de recherche
     let barreRecherche = document.querySelector("#product-search");
     barreRecherche.addEventListener("keyup", (event)=> {

@@ -50,3 +50,11 @@ let c = new Produit("Ordinateur", 1000, "Ordinateur de bureau");
 products.push(c);
 let d = new Produit("Lampe", 50, "Lampe de bureau");
 products.push(d);
+
+//On copie le localstorage dans le tableau products
+export function chargerLocalStorage(){
+    for (var i = 0; i < localStorage.length; i++) {
+        let produitPers = JSON.parse (localStorage.getItem(localStorage.key(i)));
+        products.push(produitPers);
+    }
+}
