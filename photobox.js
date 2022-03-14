@@ -7,5 +7,4 @@ document.querySelector('#load_gallery')
         GAL.load().then((elem)=>{
             GAL_UI.display_galerie(elem)
         })
-        //GAL_UI.display_galerie(GAL.load());
     })
