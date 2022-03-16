@@ -11,14 +11,18 @@
 
 <nav>
     <button id="load_gallery">load</button>
+    <button id="first">first page</button>
     <button id="previous">prev page</button>
     <button id="next">next page</button>
+    <button id="last">last page</button>
 </nav>
 
 
 <main id="gallery">
 
      <div class="gallery-container" id="gallery_container">
+
+         <!--
 
        <div class="vignette" >
          <img data-uri="/www/canals5/phox/photos/100"
@@ -70,6 +74,8 @@
               src="https://webetu.iutnc.univ-lorraine.fr/www/canals5/phox/img/small/img_586d38daa09e8.jpg">
        </div>
 
+       -->
+
      </div>
 
 
@@ -83,9 +89,17 @@
                <p id="lightbox_close">  X</p>
                <h1 id="lightbox_title">titre photo</h1>
            </div>
-
            <div id="lightbox-img">
                <img id="lightbox_full_img" src="https://webetu.iutnc.univ-lorraine.fr/www/canals5/phox/img/large/img_586d38daa09e8.jpg">
+           </div>
+           <div id="lightbox-footer">
+               <button id="lightbox_prev" class="lightbox_button">Photo prev</button>
+               <button id="lightbox_next" class="lightbox_button">Photo next</button>
+               <p id="lightbox_description"></p>
+               <h4 id="lightbox_categorie">categorie : categorie de l'image</h4>
+               <h4>Commentaires : </h4>
+               <ul id="lightbox_les_commentaires">
+               </ul>
            </div>
        </div>
 

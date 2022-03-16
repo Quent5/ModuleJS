@@ -22,6 +22,7 @@ export let display_galerie = function (tabGalery) {
         elem.addEventListener("click", e => {
             loadRessource(elem.firstChild.getAttribute("data-uri")).then((elem) => {
                 LIGHTBOX_UI.display_lightbox(elem)
+                LIGHTBOX.definirIndex(elem)
             })
         })
     })
