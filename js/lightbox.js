@@ -11,9 +11,22 @@ export function load(node) {
 }
 
 export function next() {
-    GALLERY.nbPhotos().then((elem) =>{
-        //console.log(elem)
-    })
+    console.log(indexPhoto+" " +GALLERY.indexGallery);
+    indexPhoto++;
+    if(indexPhoto >= nbPhotoPage){
+        let ancienIndex = GALLERY.indexGallery;
+        GALLERY.next();
+        if(ancienIndex != GALLERY.indexGallery)indexPhoto = 0;
+        else indexPhoto--;
+    }
+    
+    console.log(indexPhoto+" " +GALLERY.indexGallery);
+
+}
+
+
+export function prev() {
+
 }
 
 export function definirIndex(elem) {
