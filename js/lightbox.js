@@ -1,13 +1,18 @@
 import * as PHOTOLOADER from "./photoloader.js"
 import * as GALLERY from "./gallery.js"
+import {indexGallery} from "./gallery.js";
 
 let indexPhoto = 0
 let nbPhotoPage = 0
 
 export function load(node) {
-
     return PHOTOLOADER.loadRessource(node.getAttribute("data-uri"))
+}
 
+export function loadPhotoLightbox() {
+    return PHOTOLOADER.loadRessource("/www/canals5/phox/api/categories/"+indexGallery+"/photos").then((elem)=>{
+        return elem.photos[indexPhoto];
+    });
 }
 
 export function next() {
@@ -24,5 +29,6 @@ export function definirIndex(elem) {
             }
         }
         nbPhotoPage = tab.length
+        console.log(indexPhoto)
     })
 }
