@@ -34,3 +34,7 @@ document.querySelector("#last").addEventListener("click", e=>{
 document.querySelector("#lightbox_next").addEventListener("click", e=> {
     LIGHT.next()
 })
+
+document.querySelector('button[type="submit"]').addEventListener("click", e=>{
+    LIGHT.ajouterCommentaire();
+})

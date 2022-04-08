@@ -1,7 +1,7 @@
 import {loadRessource} from "./photoloader.js";
 
 export function display_lightbox(data) {
-
+    console.log(data);
     document.querySelector("#lightbox_title").innerHTML = data.photo.titre
     document.querySelector("#lightbox_full_img").setAttribute("src", "https://webetu.iutnc.univ-lorraine.fr"+data.photo.url.href )
     document.querySelector("#lightbox_description").innerHTML = "Description: "+data.photo.descr
@@ -9,6 +9,7 @@ export function display_lightbox(data) {
         displayCategorie(ee);
     })
     loadRessource(data.links.comments.href).then((ee)=>{
+        console.log(ee);
         displayCommentaire(ee);
     })
     show()

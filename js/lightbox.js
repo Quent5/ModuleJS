@@ -45,3 +45,27 @@ export function definirIndex(elem) {
         console.log(indexPhoto)
     })
 }
+
+export function ajouterCommentaire(){
+    let nom = document.getElementById("nom").value;
+    let titre  = document.getElementById("titre").value;
+    let contenu = document.getElementById("contenu").value;
+
+    let json_data = JSON.stringify({
+        "titre"       :  titre,
+        "content"     : contenu,
+        "pseudo"      : nom
+
+    });
+
+    fetch("https://webetu.iutnc.univ-lorraine.fr/api/photos/9/comments", {
+        method: 'POST',
+        body : json_data,
+        credentials : 'include',
+        headers: {
+           'Content-Type' : 'application/json;charset=utf8'
+        }
+    });
+}
+
+
